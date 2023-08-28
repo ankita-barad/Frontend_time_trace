@@ -1,0 +1,108 @@
+body {
+  font-family: "Space Grotesk", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.logo {
+  width: 30%;
+}
+nav {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #2c3e50;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+}
+.signIn_register_button {
+  display: flex;
+}
+.signInBtn,
+.RegiterBtn {
+  background-color: #abb2b9;
+  border-radius: 8px;
+  height: 36px;
+  margin-right: 30px;
+  border: none;
+}
+.features {
+  text-align: center;
+}
+.features_quote_1 {
+  font-size: 80px;
+}
+.features_quote_2 {
+  font-size: 40px;
+}
+.featureQuoteBtn {
+  height: 92px;
+  width: 20%;
+  border-radius: 10px;
+  font-size: 24px;
+}
+.report_analysis {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+.report_analysis > div {
+  padding-left: 30px;
+}
+.time_tracking {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+.time_tracking > div {
+  margin-left: 62px;
+}
+.heading {
+  font-size: 44px;
+}
+.content {
+  font-size: 24px;
+  margin-top: 32px;
+}
+.report_analysis_heading,
+.time_tracking_heading {
+  margin-right: 40px;
+}
+.time_tracking_Btn,
+.report_analysis_Btn {
+  height: 36px;
+  font-size: 20px;
+  margin-top: 22px;
+  background-color: #abb2b9;
+  border-radius: 8px;
+  border: none;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  background-color: #2c3e50;
+  color: #fff;
+  font-size: 16px;
+}
+footer > div {
+  margin-right: 150px;
+  margin-left: 150px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 8px;
+  font-size: 20px;
+}
+footer > div > div {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  font-size: 20px;
+}
+.time_tracking_image {
+  width: 800px;
+}
+.time_tracking_image img {
+  width: 100%;
+}
