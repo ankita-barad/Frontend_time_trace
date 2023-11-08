@@ -10,7 +10,7 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
-  /* top: 25%; */
+
   justify-content: center;
   align-items: center;
 }
@@ -40,20 +40,20 @@ body {
   border-radius: 7px;
 }
 .right h1 {
-  border-top-right-radius: 6px;
-  border-top-left-radius: 6px;
-  background-color: #f2f5fa;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding-bottom: 10px;
+  padding-top: 10px;
+  font-size: 20px;
 }
 .right .signupOpt {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* border: 1px solid ; */
-  /* justify-content: space-evenly; */
   padding: 5px 10px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  border-bottom-right-radius: 6px;
-  border-bottom-left-radius: 6px;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-top: 10px;
+  font-size: 16px;
 }
 .google a,
 .github a {
@@ -70,8 +70,6 @@ body {
   width: 14%;
   margin-right: 15px;
   border-radius: 50%;
-  /* border: 1px solid red; */
-  /* background-color: #D5D8DC; */
 }
 .github i {
   margin-right: 15px;
@@ -81,6 +79,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 .form div {
   margin-bottom: 15px;
@@ -92,12 +92,13 @@ body {
 }
 .form input {
   width: 90%;
-  padding: 8px;
-  border-top: none;
+
   border-radius: 5px;
-  /* box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px; */
   font-size: medium;
   margin-left: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 4px;
 }
 .form {
   width: 80%;
@@ -139,14 +140,16 @@ body {
   font-size: 22px;
   padding: 5px 20px;
   border-radius: 6px;
-  border: 4px solid grey;
-  border-top: none;
-  border-bottom: none;
+  border: 4px solid none;
+  background-color: #b4b4b4;
 }
 .signupLink a {
   text-decoration: none;
 }
-/* ++++++++++++++++++++++++ */
+.signupLink {
+  text-align: center;
+}
+
 .first {
   display: flex;
   flex-direction: column;
@@ -154,11 +157,10 @@ body {
   padding: 20px 10px;
   justify-content: center;
   align-items: center;
-  /* border: 2px solid green; */
 }
 .first .logo {
   width: 50%;
-  /* border: 1px solid red; */
+
   border-radius: 5px;
   margin-bottom: 1rem;
 }
@@ -167,13 +169,11 @@ body {
 }
 .first p i {
   font-size: 50px;
-  /* font-family: 'Satisfy', cursive; */
 }
 #bg_img {
   width: 100%;
   height: 100vh;
   position: relative;
-  /* border: 1px solid black; */
 }
 .tick {
   display: flex;
@@ -184,10 +184,38 @@ body {
 }
 .tick img {
   width: 1.2em;
-  /* border: 2px solid; */
 }
-@media screen and (max-width: 900px) {
+
+@media (max-width: 768px) {
   .left {
     display: none;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 80%;
+    margin: auto;
+    align-items: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 60%;
+    margin: auto;
+  }
+
+  .first p i {
+    font-size: 34px;
+  }
+  .right h1 {
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    font-size: 16px;
   }
 }

@@ -8,13 +8,13 @@
   </head>
   <body>
     <!-- navbar -->
-    <nav>
+    <div class="nav">
       <div><img class="logo" src="./images/logo2.png" alt="logo" /></div>
       <div class="signIn_register_button">
-        <button class="signInBtn">Sign in</button>
-        <button class="RegiterBtn">Try Time Trace free</button>
+        <div><button class="signInBtn">Sign in</button></div>
+        <div><button class="RegiterBtn">Try Time Trace free</button></div>
       </div>
-    </nav>
+    </div>
     <div class="features">
       <div class="features_quote_1">
         <p>
@@ -34,58 +34,48 @@
         <button class="featureQuoteBtn">Report Analysis</button>
       </div>
     </div>
-    <div class="report_analysis">
-      <div class="report_analysis_heading">
-        <div class="heading">Reports & analysis</div>
-        <div class="content">
-          Track your hours and use a wide <br />
-          selection of visual reports that help <br />
-          keep projects running smoothly and <br />
-          your team supported
+    <div class="report_container">
+      <div class="report_analysis">
+        <div class="report_analysis_heading">
+          <div class="heading">Reports & analysis</div>
+          <div class="content">
+            Track your hours and use a wide <br />
+            selection of visual reports that help <br />
+            keep projects running smoothly and <br />
+            your team supported
+          </div>
+          <button class="report_analysis_Btn">Time Trace Free</button>
         </div>
-        <button class="report_analysis_Btn">Time Trace Free</button>
+        <div class="flex-grow-1 time_tracking_image">
+          <img src="./images/Screenshot 2023-06-18 200031.png" alt="" />;
+        </div>
       </div>
-      <div class="flex-grow-1 time_tracking_image">
-        <img src="./images/Screenshot 2023-06-18 200031.png" alt="" />;
+
+      <div class="report_analysis">
+        <div class="report_analysis_heading">
+          <div class="heading">
+            Time tracking <br />
+            software
+          </div>
+          <div class="content">
+            An intuitive, lightweight solution for <br />
+            tracking hours and projectsthat’s <br />
+            easy to adopt and use daily.
+          </div>
+          <button class="report_analysis_Btn">Time Trace Free</button>
+        </div>
+        <div class="flex-grow-1 time_tracking_image">
+          <img src="./images/Screenshot 2023-06-18 200126.png" alt="" />;
+        </div>
       </div>
     </div>
 
-    <div class="report_analysis">
-      <div class="report_analysis_heading">
-        <div class="heading">
-          Time tracking <br />
-          software
-        </div>
-        <div class="content">
-          An intuitive, lightweight solution for <br />
-          tracking hours and projectsthat’s <br />
-          easy to adopt and use daily.
-        </div>
-        <button class="report_analysis_Btn">Time Trace Free</button>
-      </div>
-      <div class="flex-grow-1 time_tracking_image">
-        <img src="./images/Screenshot 2023-06-18 200126.png" alt="" />;
-      </div>
-    </div>
-
-    <!-- <div class="time_tracking">
-      <div class="time_tracking_heading">
-        <div class="heading"></div>
-        <div class="content">
-        
-        </div>
-        <button class="time_tracking_Btn">Time Trace Free</button>
-      </div>
-      <div class="time_tracking_image">
-        <img src="./images/Screenshot 2023-06-18 200126.png" alt="" />
-      </div>
-    </div> -->
-    <footer>
+    <div class="footer">
       <div>Time Trace</div>
       <div>
-        <div>Harvest</div>
+        <div>Time Trace</div>
         <div>Home</div>
-        <div>Why Harvest?</div>
+        <div>Why TimeTrace?</div>
         <div>Features</div>
         <div>Pricing</div>
         <div>Integrations</div>
@@ -110,18 +100,18 @@
         <div>Legal</div>
         <div>Contact us</div>
       </div>
-    </footer>
+    </div>
   </body>
   <script>
     let signInBtn = document.querySelector(".signInBtn");
     signInBtn.addEventListener("click", () => {
-      window.location.href = "/login.html";
+      window.location.href = "./login.html";
     });
 
     let registerBtn = document.querySelector(".RegiterBtn");
 
     registerBtn.addEventListener("click", () => {
-      window.location.href = "/register.html";
+      window.location.href = "./register.html";
     });
   </script>
 </html>

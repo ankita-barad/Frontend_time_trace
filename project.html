@@ -19,12 +19,36 @@
     <title>Project</title>
   </head>
   <body>
+    <button class="burger-menu-btn d-md-none" onclick="toggleMenu()">☰</button>
     <nav>
       <div class="d-flex justify-content-between mx-3">
         <h1>Projects</h1>
         <button class="btn btn-sm btn-danger logoutBtn">LOGOUT</button>
       </div>
     </nav>
+
+    <!-- Burger menu button for small and medium screens -->
+    <!-- <button class="burger-menu-btn d-md-none" onclick="toggleMenu()">☰</button> -->
+
+    <div class="burger-menu">
+      <ul class="burger-menu-list">
+        <li>
+          <button
+            class="btn btn-secondary my-3"
+            data-bs-toggle="modal"
+            data-bs-target="#create-project-modal"
+          >
+            Create Project <span>+</span>
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-secondary dashboard">
+            Report and Analysis
+          </button>
+        </li>
+        <li><button class="btn btn-secondary calender">Calendar</button></li>
+      </ul>
+    </div>
 
     <main class="d-flex">
       <aside class="rounded-4 m-3">
@@ -39,30 +63,32 @@
           </button>
         </div>
         <div class="mb-3">
-          <button class="btn btn-secondary dashboard">
+          <button class="btn btn-secondary dashboard_aside">
             Report and Analysis
           </button>
         </div>
         <div class="mb-3">
-          <button class="btn btn-secondary calender">calender</button>
+          <button class="btn btn-secondary calender_aside">calender</button>
         </div>
       </aside>
 
       <section class="flex-grow-1 table-section card rounded-4 m-3">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Description</th>
-              <th scope="col">Created By</th>
-              <th scope="col">Created At</th>
-              <th scope="col">Create Task</th>
-            </tr>
-          </thead>
-          <tbody id="projectList">
-            <!-- Populated dynamically with JavaScript -->
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Created By</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Create Task</th>
+              </tr>
+            </thead>
+            <tbody id="projectList">
+              <!-- Populated dynamically with JavaScript -->
+            </tbody>
+          </table>
+        </div>
 
         <!-- CREATE PROJECT Modal -->
         <div id="create-project-modal" class="modal" tabindex="-1">
@@ -104,6 +130,48 @@
                   class="btn btn-primary"
                 >
                   Create
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Delete Project Modal -->
+        <div id="delete-task-modal" class="modal" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Delete Project</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure you want to delete this Project?</p>
+                <input
+                  type="text"
+                  disabled
+                  class="visually-hidden"
+                  id="delete_project_id"
+                />
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  No
+                </button>
+                <button
+                  type="button"
+                  onClick="deleteProject()"
+                  class="btn btn-primary"
+                >
+                  Yes
                 </button>
               </div>
             </div>
@@ -233,6 +301,28 @@
         .catch((err) => console.log(err));
     };
 
+    //delete task
+    const deleteProject = () => {
+      const projectId = document.querySelector("#delete_project_id").value;
+      if (!projectId) {
+        console.log("project id not found");
+        return;
+      }
+
+      fetch(`https://time-trace-backend.onrender.com/project/${projectId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+          window.location.reload();
+        })
+        .catch((err) => console.log(err));
+    };
+
     window.onload = () => {
       fetch("https://time-trace-backend.onrender.com/project/", {
         method: "GET",
@@ -283,11 +373,25 @@
 
         createTaskCell.appendChild(createTaskButton);
 
+        const deleteTaskCell = document.createElement("td");
+        const deleteTaskButton = document.createElement("button");
+        deleteTaskButton.setAttribute("class", "btn btn-secondary");
+        deleteTaskButton.dataset.bsToggle = "modal";
+        deleteTaskButton.dataset.bsTarget = "#delete-task-modal";
+        deleteTaskButton.dataset.id = project._id;
+        deleteTaskButton.addEventListener("click", () => {
+          document.querySelector("#delete_project_id").value = project._id;
+        });
+        deleteTaskButton.textContent = "🗑️";
+
+        deleteTaskCell.appendChild(deleteTaskButton);
+
         row.appendChild(nameCell);
         row.appendChild(descriptionCell);
         row.appendChild(createdByCell);
         row.appendChild(createdAtCell);
         row.appendChild(createTaskCell);
+        row.appendChild(deleteTaskCell);
 
         tableBody.appendChild(row);
       });
@@ -296,16 +400,31 @@
     let dashboard = document.querySelector(".dashboard");
 
     dashboard.addEventListener("click", () => {
-      window.location.href = "/dashboard.html";
+      window.location.href = "./dashboard.html";
     });
     let calender = document.querySelector(".calender");
     calender.addEventListener("click", () => {
-      window.location.href = "/calender/calender.html";
+      window.location.href = "./calender/calender.html";
+    });
+
+    let dashboard_aside = document.querySelector(".dashboard_aside");
+    dashboard_aside.addEventListener("click", () => {
+      window.location.href = "/dashboard.html";
+    });
+
+    let calender_aside = document.querySelector(".calender_aside");
+    calender_aside.addEventListener("click", () => {
+      window.location.href = "./calender/calender.html";
     });
 
     let logout = document.querySelector(".logoutBtn");
     logout.addEventListener("click", () => {
       window.location.href = "/index.html";
     });
+
+    function toggleMenu() {
+      const burgerMenu = document.querySelector(".burger-menu");
+      burgerMenu.classList.toggle("show");
+    }
   </script>
 </html>

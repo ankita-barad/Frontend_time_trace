@@ -22,7 +22,7 @@ nav h1 {
 aside {
   background-color: #d5d8dc;
   padding: 10px;
-  width: 200px;
+  width: 202px;
 }
 
 ul {
@@ -124,4 +124,80 @@ dialog::backdrop {
 .table-section {
   height: calc(100vh - 52px);
   overflow-y: scroll;
+}
+
+/* CSS for burger menu button
+.burger-menu-btn {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+
+
+@media (max-width: 768px) {
+  .burger-menu-btn {
+    display: block;
+  }
+} */
+
+/* CSS for burger menu button */
+.burger-menu-btn {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 999;
+}
+.burger-menu-btn {
+  border-radius: 4px;
+  height: 38px;
+}
+
+@media (max-width: 992px) {
+  /* Show the burger menu button on screens with a maximum width of 992px */
+  .burger-menu-btn {
+    display: block;
+  }
+  aside {
+    display: none; /* Hide the aside menu on small and medium screens */
+  }
+  .logoutBtn {
+    margin-right: 40px;
+  }
+  .table-scrollable {
+    overflow-x: auto;
+  }
+}
+
+.burger-menu {
+  display: none;
+  position: absolute;
+  top: 52px;
+  right: 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  z-index: 998;
+}
+
+.burger-menu.show {
+  display: block;
+}
+
+.burger-menu-list {
+  list-style: none;
+  padding: 0;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.burger-menu-list li {
+  margin-bottom: 10px;
 }
